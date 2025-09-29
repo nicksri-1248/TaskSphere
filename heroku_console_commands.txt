@@ -1,0 +1,19 @@
+# Heroku Web Console Commands
+
+# After deploying via GitHub, run these commands in Heroku Web Console:
+# (Go to your app dashboard → More → Run console)
+
+# 1. Run database migrations
+python manage.py migrate
+
+# 2. Create a superuser account (follow the prompts)
+python manage.py createsuperuser
+
+# 3. Collect static files
+python manage.py collectstatic --noinput
+
+# 4. Optional: Load sample data (if you have fixtures)
+# python manage.py loaddata sample_data.json
+
+# To check if everything is working:
+python manage.py check --deploy

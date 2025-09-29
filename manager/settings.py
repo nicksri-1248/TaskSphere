@@ -25,7 +25,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '!%m041&45i+ks6*fmf2$lf69+uarcv5l-2554
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = ['*'] if os.environ.get('HEROKU_APP_NAME') else ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'localhost', 
+    '127.0.0.1',
+    '.onrender.com',  # Render domains
+    '*'  # Allow all for now, you can restrict this later
+]
 
 
 # Application definition
@@ -61,6 +66,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'manager.urls'
 
+# CSRF trusted origins for Render
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.onrender.com',
+]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -94,6 +104,7 @@ DATABASES = {
 # Production database
 if 'DATABASE_URL' in os.environ:
     DATABASES['default'] = dj_database_url.parse(os.environ['DATABASE_URL'])
+    DATABASES['default']['CONN_MAX_AGE'] = 600
 
 
 # Password validation
