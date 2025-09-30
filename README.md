@@ -10,8 +10,6 @@
 * Views by Users, by Tasks and Projects
 * Login and Logout, Create your Profile, update Profile picture
 * Interact with other users sending friendly requests, add and remove friends
-* Hosted at: http://gui-projects.herokuapp.com/
-* Integration with Amazon AWS S3 for static files
 
 ## Built With:
 
